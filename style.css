@@ -1,0 +1,63 @@
+#input{
+    text-align: center;
+    width: 250px;
+    font-size: 2em;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    padding: 0.5em;
+    margin: 0px;
+    border-radius: 0.5em;
+    box-shadow: rgb(204 204 204) 0px 0px 0.5em 0.5em;
+    font-family: monospace;
+    font-weight: bold;
+    text-shadow: rgb(204 204 204) 0px 0px 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-indent: 0.5em;
+    line-height: 1.5em;
+}
+
+.general{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.myDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.myDiv2{
+    margin-top: 20px;
+    display: flex;
+
+}
+#colorDiv{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hexCol{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#colorDiv * {
+    padding: 0.25em;
+    text-align: center;
+}
+#colorDiv:hover{
+    cursor: pointer;
+}
