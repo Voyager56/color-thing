@@ -34,7 +34,7 @@
 .myDiv2{
     margin-top: 20px;
     display: flex;
-
+    flex-wrap: wrap;
 }
 #colorDiv{
     width: 100px;
