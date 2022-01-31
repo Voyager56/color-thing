@@ -36,44 +36,48 @@ myInput.addEventListener('keyup', function() {
 );
 
 myInput.addEventListener('keyup' , () => {
-    if (myInput.value.match(/^#[0-9a-f]{6}$/i)) {
-        let className = (myInput.value).replace('#', '');
-        if(/^\d/.test(className)){
-            className = 'P' + className;
-        };
-        if(document.querySelector(`.${className}`) || document.querySelector(`.P${className}`)) return;
-        const colorDiv = document.createElement('div');
-        colorDiv.style.backgroundColor = myInput.value;
-        colorDiv.setAttribute('class', className);
-        colorDiv.setAttribute('id', "colorDiv");
-        const hexCol = document.createElement('div');
-        hexCol.setAttribute('class', 'hexCol');
-        hexCol.innerHTML = myInput.value;
-        let color = myInput.value.replace('#', '');
-        let n_match = ntc.name(color);
-        const name = document.createElement('div');
-        name.setAttribute('class', 'name');
-        name.innerHTML = n_match[1];
-        colorDiv.appendChild(hexCol);
-        colorDiv.appendChild(name);
-        let r = parseInt(color.substr(0, 2), 16);
-        let g = parseInt(color.substr(2, 2), 16);
-        let b = parseInt(color.substr(4, 2), 16);
-        let yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        colorDiv.style.color = yiq >= 128 ? 'black' : 'white'
-        colorDiv.addEventListener('click', () => {
-            colorDiv.remove();
-        });
-        colorDiv.addEventListener('mouseover', () => {
-            colorDiv.style.boxShadow = `10px 20px 30px ` + colorDiv.style.backgroundColor;
-            colorDiv.addEventListener('mouseout', () => {
-                colorDiv.style.boxShadow = '';
-            }
-            );
-        });
-        colorDiv.setAttribute('unselectable', 'on');
-        myDiv2.appendChild(colorDiv);
-    }
+    if (!myInput.value.match(/^#[0-9a-f]{6}$/i)) return;
+    myInput.value = myInput.value.toLowerCase()
+    let className = (myInput.value).replace('#', '')
+    if(/^\d/.test(className)){
+        className = 'P' + className;
+    };
+    if(document.querySelector(`.${className}`) || document.querySelector(`.P${className}`)) return;
+    
+    const colorDiv = document.createElement('div');
+    const hexCol = document.createElement('div');
+    colorDiv.style.backgroundColor = myInput.value;
+    colorDiv.setAttribute('class', className);
+    colorDiv.setAttribute('id', "colorDiv");
+    hexCol.setAttribute('class', 'hexCol');
+    hexCol.innerHTML = myInput.value;
+
+    let color = myInput.value.replace('#', '');
+    let n_match = ntc.name(color);
+    const name = document.createElement('div');
+    name.setAttribute('class', 'name');
+    name.innerHTML = n_match[1];
+    colorDiv.appendChild(hexCol);
+    colorDiv.appendChild(name);
+
+    let r = parseInt(color.substr(0, 2), 16);
+    let g = parseInt(color.substr(2, 2), 16);
+    let b = parseInt(color.substr(4, 2), 16);
+    let yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    colorDiv.style.color = yiq >= 128 ? 'black' : 'white'
+    colorDiv.addEventListener('click', () => {
+        colorDiv.remove();
+    });
+
+    colorDiv.addEventListener('mouseover', () => {
+        colorDiv.style.boxShadow = `10px 20px 30px ` + colorDiv.style.backgroundColor;
+        colorDiv.addEventListener('mouseout', () => {
+            colorDiv.style.boxShadow = '';
+        }
+        );
+    });
+    
+    myDiv2.appendChild(colorDiv);
 })
 
 
